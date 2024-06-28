@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { RouterOutlet } from '@angular/router';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 @Component({
   selector: 'app-main-nav',
@@ -24,7 +25,9 @@ import { RouterOutlet } from '@angular/router';
     AsyncPipe,
     RouterOutlet
   ]
+  
 })
+
 export class MainNavComponent {
   private breakpointObserver = inject(BreakpointObserver);
 

@@ -1,1 +1,42 @@
-<p>sales-dashboard works!</p>
+<div class="component-container">
+  <div class="select-container">
+    <div class="select-content">
+      <label for="cars">Escolha um carro:</label>
+      <select id="cars" name="cars">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
+    </div>
+    <div class="select-content">
+      <label for="cars">Escolha um carro:</label>
+      <select id="cars" name="cars">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
+    </div>
+    <div class="select-content">
+      <label for="cars">Escolha um carro:</label>
+      <select id="cars" name="cars">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
+    </div>
+  </div>
+  <div class="graph-content">
+    <canvas class="graph"
+      baseChart
+      [data]="barChartData"
+      [options]="barChartOptions"
+      [type]="barChartType"
+      (chartHover)="chartHovered($event)"
+      (chartClick)="chartClicked($event)"
+    >
+    </canvas>
+</div>
+</div>

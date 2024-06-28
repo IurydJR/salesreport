@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { MainNavComponent } from "./components/main-nav/main-nav.component";
 
 @Component({
@@ -7,7 +6,7 @@ import { MainNavComponent } from "./components/main-nav/main-nav.component";
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
-    imports: [RouterOutlet, MainNavComponent]
+    imports: [MainNavComponent]
 })
 export class AppComponent {
   title = 'salesReport';

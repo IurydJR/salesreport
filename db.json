@@ -1,0 +1,98 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Eletrônicos",
+      "brands": [
+        {
+          "id": 1,
+          "name": "Marca A",
+          "products": [
+            {
+              "id": 1,
+              "name": "Produto 1",
+              "sales": [
+                {
+                  "date": "2024-01-01",
+                  "quantity": 10,
+                  "value": 1000
+                },
+                {
+                  "date": "2024-01-02",
+                  "quantity": 5,
+                  "value": 500
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "name": "Produto 2",
+              "sales": [
+                {
+                  "date": "2024-01-01",
+                  "quantity": 7,
+                  "value": 700
+                },
+                {
+                  "date": "2024-01-02",
+                  "quantity": 8,
+                  "value": 800
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Marca B",
+          "products": [
+            {
+              "id": 3,
+              "name": "Produto 3",
+              "sales": [
+                {
+                  "date": "2024-01-01",
+                  "quantity": 15,
+                  "value": 1500
+                },
+                {
+                  "date": "2024-01-02",
+                  "quantity": 20,
+                  "value": 2000
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Moda",
+      "brands": [
+        {
+          "id": 3,
+          "name": "Marca C",
+          "products": [
+            {
+              "id": 4,
+              "name": "Produto 4",
+              "sales": [
+                {
+                  "date": "2024-01-01",
+                  "quantity": 25,
+                  "value": 2500
+                },
+                {
+                  "date": "2024-01-02",
+                  "quantity": 30,
+                  "value": 3000
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

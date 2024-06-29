@@ -15,5 +15,22 @@ export class SalesService {
   getAll(): Observable<any>{
     return this.httpClient.request('GET', this.apiUrl, {responseType:'json'});
   }
+
+
+  getSaleById(id: number): Observable<any> {
+    return this.httpClient.get(`${this.apiUrl}/${id}`);
+  }
+
+  createSale(sale: any): Observable<any> {
+    return this.httpClient.post(this.apiUrl, sale);
+  }
+
+  updateSale(id: number, sale: any): Observable<any> {
+    return this.httpClient.put(`${this.apiUrl}/${id}`, sale);
+  }
+
+  deleteSale(id: number): Observable<any> {
+    return this.httpClient.delete(`${this.apiUrl}/${id}`);
+  }
   
 }

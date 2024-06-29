@@ -74,10 +74,6 @@ orangeGradient.addColorStop(1, "#c96d04");
   public product: any[] = [];
   public brand: any[] = [];
 
-  public totalJan: Array<number> = [49];
-  public totalFeb: Array<number> = [59];
-  public totalMar: Array<number> = [80];
-  public totalApr: Array<number> = [61];
 
 
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {

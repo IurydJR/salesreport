@@ -12,16 +12,8 @@ export class SalesService {
   constructor(private httpClient: HttpClient) {}
 
   // GET heroes whose name contains search term
-  searchHeroes(): Observable<any>{
+  getAll(): Observable<any>{
     return this.httpClient.request('GET', this.apiUrl, {responseType:'json'});
   }
-  getAll(): Observable<any[]> {
-    return this.httpClient.get<any[]>(this.apiUrl, { observe: 'response' }).pipe(
-      map((res: HttpResponse<any[]>) => {
-        console.log('Response status:', res.status);
-        console.log('Body:', res.body);
-        return res.body || [];
-      }),
-    );
-  }
+  
 }

@@ -1,2 +1,28 @@
-<p>sales-list works!</p><br><br>
-<p>{{sales}}</p>
+<div class="component-container">
+  <div class="select-container">
+    <div class="select-content">
+      <label for="categories">Category:</label>
+      <select id="categories" name="categories" (change)="onCategoryChange($event)">
+        <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+      </select>
+    </div>
+    <div class="select-content">
+      <label for="products">Product:</label>
+      <select id="products" name="products" (change)="onProductChange($event)">
+        <option *ngFor="let product of products" [value]="product.id">{{ product.name }}</option>
+      </select>
+    </div>
+    <div class="select-content">
+      <label for="brands">Brand:</label>
+      <select id="brands" name="brands" (change)="onBrandChange($event)">
+        <option *ngFor="let brand of brands" [value]="brand.id">{{ brand.name }}</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div>
+  <p>Janeiro: {{this.sales[0]?.quantity}}</p>
+  <p>Fevereiro: {{this.sales[1]?.quantity}}</p>
+  <p>Março: {{this.sales[2]?.quantity}}</p>
+  <p>Abril: {{this.sales[3]?.quantity}}</p>
+</div>

@@ -1,7 +1,6 @@
 import { Component, ViewChild, OnInit  } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
-import { SalesService } from '../../services/sales.service';
 
 @Component({
   selector: 'app-sales-dashboard',

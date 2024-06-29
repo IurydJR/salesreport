@@ -26,9 +26,11 @@ export class SalesListComponent implements OnInit {
     this.loadData();
   }
 
+  // Load data from Api to fill select input
   loadData(): void {
     this.loadCategories();
   }
+  
   loadCategories(): void {
     this.salesService.getAll().subscribe(data => {
       this.categories = data;
@@ -51,6 +53,7 @@ export class SalesListComponent implements OnInit {
     this.brands = brands;
   }
 
+  // Update the another select values and the chart data when a select value changes 
   onCategoryChange(event: any): void {
     this.categoryId = Number(event.target.value);
     const selectedCategory = this.categories.find(cat => Number(cat.id) === this.categoryId);

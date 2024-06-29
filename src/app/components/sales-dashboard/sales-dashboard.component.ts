@@ -15,6 +15,7 @@ import {FormsModule} from '@angular/forms';
   templateUrl: './sales-dashboard.component.html',
   styleUrl: './sales-dashboard.component.scss'
 })
+
 export class SalesDashboardComponent implements OnInit {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective<'bar'> | undefined;
 
@@ -41,25 +42,22 @@ export class SalesDashboardComponent implements OnInit {
       const ctx = this.chart.chart.ctx;
       const height = this.chart.chart.height;
 
-// Blue gradient for January
-const blueGradient = ctx.createLinearGradient(0, 0, 0, height);
-blueGradient.addColorStop(0, "#38caff"); 
-blueGradient.addColorStop(1, "##104db0"); 
+      // Gradient color for chart bar
+      const blueGradient = ctx.createLinearGradient(0, 0, 0, height);
+      blueGradient.addColorStop(0, "#38caff"); 
+      blueGradient.addColorStop(1, "##104db0"); 
 
-// Green gradient for February
-const greenGradient = ctx.createLinearGradient(0, 0, 0, height);
-greenGradient.addColorStop(0, "#63f549");       
-greenGradient.addColorStop(1, "#0b701f"); 
+      const greenGradient = ctx.createLinearGradient(0, 0, 0, height);
+      greenGradient.addColorStop(0, "#63f549");       
+      greenGradient.addColorStop(1, "#0b701f"); 
 
-// Yellow gradient for March
-const yellowGradient = ctx.createLinearGradient(0, 0, 0, height);
-yellowGradient.addColorStop(0, "#f7ec0c"); 
-yellowGradient.addColorStop(1, "#b5b50b"); 
+      const yellowGradient = ctx.createLinearGradient(0, 0, 0, height);
+      yellowGradient.addColorStop(0, "#f7ec0c"); 
+      yellowGradient.addColorStop(1, "#b5b50b"); 
 
-// Orange gradient for April
-const orangeGradient = ctx.createLinearGradient(0, 0, 0, height);
-orangeGradient.addColorStop(0, "#fcd5a2"); 
-orangeGradient.addColorStop(1, "#c96d04"); 
+      const orangeGradient = ctx.createLinearGradient(0, 0, 0, height);
+      orangeGradient.addColorStop(0, "#fcd5a2"); 
+      orangeGradient.addColorStop(1, "#c96d04"); 
 
       this.barChartData.datasets[0].backgroundColor = blueGradient;
       this.barChartData.datasets[1].backgroundColor = greenGradient;
@@ -74,10 +72,8 @@ orangeGradient.addColorStop(1, "#c96d04");
   public product: any[] = [];
   public brand: any[] = [];
 
-
-
+  // Chart options configuration
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {
-    // We use these empty structures as placeholders for dynamic theming.
     scales: {
       x: {},
       y: {
@@ -102,7 +98,7 @@ orangeGradient.addColorStop(1, "#c96d04");
     ],
   };
 
-  // events
+  // Events to chart
   public chartClicked({
     event,
     active,
@@ -123,9 +119,11 @@ orangeGradient.addColorStop(1, "#c96d04");
     console.log(event, active);
   }
 
+  // Load data from Api to fill select input
   loadData(): void {
     this.loadCategories();
   }
+
   loadCategories(): void {
     this.salesService.getAll().subscribe(data => {
       this.categories = data;
@@ -148,6 +146,7 @@ orangeGradient.addColorStop(1, "#c96d04");
     this.brands = brands;
   }
 
+  // Update the another select values and the chart data when a select value changes 
   onCategoryChange(event: any): void {
     this.categoryId = Number(event.target.value);
     const selectedCategory = this.categories.find(cat => Number(cat.id) === this.categoryId);
@@ -177,7 +176,8 @@ orangeGradient.addColorStop(1, "#c96d04");
       this.updateGraph()
     }
   }
-
+ 
+  // Update chart data with updating data sale
   updateGraph() {
     this.barChartData.datasets[0].data = [this.sales[0]?.quantity || 0]
     this.barChartData.datasets[1].data = [this.sales[1]?.quantity || 0]

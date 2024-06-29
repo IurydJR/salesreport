@@ -28,6 +28,8 @@ import { RouterOutlet } from '@angular/router';
 })
 
 export class MainNavComponent {
+  
+  //Observes the current viewport size and determines if it matches the handset breakpoint.
   private breakpointObserver = inject(BreakpointObserver);
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)

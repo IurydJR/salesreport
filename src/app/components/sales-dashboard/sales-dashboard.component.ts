@@ -3,11 +3,15 @@ import { ChartConfiguration, ChartData, ChartEvent } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { SalesService } from '../../services/sales.service';
 import { NgFor } from '@angular/common';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-sales-dashboard',
   standalone: true,
-  imports: [BaseChartDirective, NgFor],
+  imports: [BaseChartDirective, NgFor, FormsModule, MatFormFieldModule, MatSelectModule, MatInputModule],
   templateUrl: './sales-dashboard.component.html',
   styleUrl: './sales-dashboard.component.scss'
 })
@@ -26,6 +30,44 @@ export class SalesDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData();
+  }
+
+  ngAfterViewInit(): void {
+    this.applyGradients();
+  }
+
+  applyGradients(): void {
+    if (this.chart && this.chart.chart) {
+      const ctx = this.chart.chart.ctx;
+      const height = this.chart.chart.height;
+
+// Blue gradient for January
+const blueGradient = ctx.createLinearGradient(0, 0, 0, height);
+blueGradient.addColorStop(0, "#38caff"); 
+blueGradient.addColorStop(1, "##104db0"); 
+
+// Green gradient for February
+const greenGradient = ctx.createLinearGradient(0, 0, 0, height);
+greenGradient.addColorStop(0, "#63f549");       
+greenGradient.addColorStop(1, "#0b701f"); 
+
+// Yellow gradient for March
+const yellowGradient = ctx.createLinearGradient(0, 0, 0, height);
+yellowGradient.addColorStop(0, "#f7ec0c"); 
+yellowGradient.addColorStop(1, "#b5b50b"); 
+
+// Orange gradient for April
+const orangeGradient = ctx.createLinearGradient(0, 0, 0, height);
+orangeGradient.addColorStop(0, "#fcd5a2"); 
+orangeGradient.addColorStop(1, "#c96d04"); 
+
+      this.barChartData.datasets[0].backgroundColor = blueGradient;
+      this.barChartData.datasets[1].backgroundColor = greenGradient;
+      this.barChartData.datasets[2].backgroundColor = yellowGradient;
+      this.barChartData.datasets[3].backgroundColor = orangeGradient;
+
+      this.chart.update();
+    }
   }
 
   public category: any[] = [];
@@ -55,12 +97,12 @@ export class SalesDashboardComponent implements OnInit {
   public barChartType = 'bar' as const;
 
   public barChartData: ChartData<'bar'> = {
-    labels: ["Brand"],
+    labels: [],
     datasets: [
-      { data: [], label: 'January', },
-      { data: [], label: 'February', },
-      { data: [], label: 'March', },
-      { data: [], label: 'April', }
+      { data: [], label: 'January', backgroundColor: 'blue' },
+      { data: [], label: 'February', backgroundColor: 'green'},
+      { data: [], label: 'March', backgroundColor: 'yellow'},
+      { data: [], label: 'April', backgroundColor: 'orange'}
     ],
   };
 
@@ -149,5 +191,8 @@ export class SalesDashboardComponent implements OnInit {
       this.chart.update();
     }
   }
+
+
+
 }
 

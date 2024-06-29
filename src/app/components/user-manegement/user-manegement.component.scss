@@ -1,0 +1,17 @@
+.component-container {
+  padding-top: 5vh;
+  display: flex;
+  gap:10px;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  flex-direction: column;
+}
+
+.Component-content {
+  display: flex;
+  justify-content: center;
+  width: 80vw;
+  height: 60vh;
+}
+

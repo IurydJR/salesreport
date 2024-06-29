@@ -1,7 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit  } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
-import { MatButton } from '@angular/material/button';
+import { SalesService } from '../../services/sales.service';
 
 @Component({
   selector: 'app-sales-dashboard',
@@ -12,6 +12,16 @@ import { MatButton } from '@angular/material/button';
 })
 export class SalesDashboardComponent {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective<'bar'> | undefined;
+
+  public category: any[] = [];
+  public product: any[] = [];
+  public brand: any[] = [];
+
+  totalJan: Array<number> = [60];
+  totalFeb: Array<number> = [59];
+  totalMar: Array<number> = [80];
+  totalApr: Array<number> = [61];
+
 
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {
     // We use these empty structures as placeholders for dynamic theming.
@@ -30,10 +40,12 @@ export class SalesDashboardComponent {
   public barChartType = 'bar' as const;
 
   public barChartData: ChartData<'bar'> = {
-    labels: ['2006', '2007', '2008', '2009', '2010', '2011', '2012'],
+    labels: ["Brand"],
     datasets: [
-      { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-      { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
+      { data: this.totalJan, label: 'January', },
+      { data: this.totalFeb, label: 'February', },
+      { data: this.totalMar, label: 'March', },
+      { data: this.totalApr, label: 'April', }
     ],
   };
 

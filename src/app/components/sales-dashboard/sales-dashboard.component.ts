@@ -45,7 +45,7 @@ export class SalesDashboardComponent implements OnInit {
       // Gradient color for chart bar
       const blueGradient = ctx.createLinearGradient(0, 0, 0, height);
       blueGradient.addColorStop(0, "#38caff"); 
-      blueGradient.addColorStop(1, "##104db0"); 
+      blueGradient.addColorStop(1, "#104db0"); 
 
       const greenGradient = ctx.createLinearGradient(0, 0, 0, height);
       greenGradient.addColorStop(0, "#63f549");       
@@ -89,7 +89,7 @@ export class SalesDashboardComponent implements OnInit {
   public barChartType = 'bar' as const;
 
   public barChartData: ChartData<'bar'> = {
-    labels: [],
+    labels: [""],
     datasets: [
       { data: [], label: 'January', backgroundColor: 'blue' },
       { data: [], label: 'February', backgroundColor: 'green'},

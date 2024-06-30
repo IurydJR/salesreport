@@ -119,13 +119,10 @@ export class SalesDashboardComponent implements OnInit {
     this.categoryId = Number(event.target.value);
     const selectedCategory = this.dataSales.categories.find(cat => Number(cat.id) === this.categoryId);
     if (selectedCategory) {
-      this.dataSales.products = selectedCategory.products.subscribe(() => {
-        this.dataSales.brands = this.dataSales.products[0].brands.subscribe(() => {
-          this.dataSales.sales = this.dataSales.brands[0].sales.subscribe(() => {
-            this.updateGraph();
-          });
-        });
-      });
+      this.dataSales.products = selectedCategory.products;
+      this.dataSales.brands = this.dataSales.products[0]?.brands || [];
+      this.dataSales.sales = this.dataSales.brands[0]?.sales || [];
+      this.updateGraph();
     }
   }
 
@@ -133,11 +130,9 @@ export class SalesDashboardComponent implements OnInit {
     this.productId = Number(event.target.value); 
     const selectedProduct = this.dataSales.products.find(prod => Number(prod.id) === this.productId);
     if (selectedProduct) {
-      this.dataSales.brands = selectedProduct.brands.subscribe(() => {
-        this.dataSales.sales = this.dataSales.brands[0].sales.subscribe(() => {
-          this.updateGraph();
-        });
-      });
+      this.dataSales.brands = selectedProduct.brands;
+      this.dataSales.sales = this.dataSales.brands[0]?.sales || [];
+      this.updateGraph();
     }
   }
 
@@ -145,9 +140,8 @@ export class SalesDashboardComponent implements OnInit {
     this.brandId = Number(event.target.value); 
     const selectedBrand = this.dataSales.brands.find(brand => Number(brand.id) === this.brandId);
     if (selectedBrand) {
-      this.dataSales.sales = selectedBrand.sales.subscribe(() => {
-        this.updateGraph();
-      });
+      this.dataSales.sales = selectedBrand.sales;
+      this.updateGraph();
     }
   }
 

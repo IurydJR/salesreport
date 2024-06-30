@@ -3,19 +3,19 @@
     <div class="select-content">
       <label class="label" for="products">Category:</label>
       <select id="categories" name="categories" (change)="onCategoryChange($event)">
-        <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+        <option *ngFor="let category of dataSales.categories" [value]="category.id">{{ category.name }}</option>
       </select>
     </div>
     <div class="select-content">
       <label class="label" for="products">Product:</label>
       <select id="products" name="products" (change)="onProductChange($event)">
-        <option *ngFor="let product of products" [value]="product.id">{{ product.name }}</option>
+        <option *ngFor="let product of dataSales.products" [value]="product.id">{{ product.name }}</option>
       </select>
     </div>
     <div class="select-content">
       <label class="label" for="brands">Brand:</label>
       <select id="brands" name="brands" (change)="onBrandChange($event)">
-        <option *ngFor="let brand of brands" [value]="brand.id">{{ brand.name }}</option>
+        <option *ngFor="let brand of dataSales.brands" [value]="brand.id">{{ brand.name }}</option>
       </select>
     </div>
   </div>

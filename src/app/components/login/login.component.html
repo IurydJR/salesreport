@@ -3,24 +3,24 @@
     <div class="image-container">
       <img src='./assets/img/logoAllTax.webp' alt="Logo AllTax">
     </div>
-    <div class="input-container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="input-container">
       <mat-form-field>
-        <mat-label>UserName</mat-label>
-        <input matInput>
+        <mat-label for="username">Username</mat-label>
+        <input matInput id="username" type="text" formControlName="username">
       </mat-form-field> 
       <mat-form-field>
-        <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide() ? 'password' : 'text'" />
-        <button
-          mat-icon-button
-          matSuffix
-          (click)="clickEvent($event)"
-          [attr.aria-label]="'Hide password'"
-          [attr.aria-pressed]="hide()"
-        >
+        <mat-label for="password">Enter your password</mat-label>
+        <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password"/>
+        <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
           <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
       </mat-form-field>
-    </div>
+      <section>
+        <div style="text-align: end">
+          <button mat-button>Forgot the password</button>
+          <button mat-flat-button>Sign in</button>
+        </div>
+      </section>
+    </form>
   </div>
 </div>

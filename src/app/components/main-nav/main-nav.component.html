@@ -27,6 +27,12 @@
         (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
+      <div (click)="goToLogin()">
+        <div *ngIf="showUser().letter !== undefined" class="letterIcon">{{ showUser().letter }}</div>
+        <label *ngIf="showUser().user?.name !== undefined">{{ showUser().user?.name }}</label>
+        <div *ngIf="!showUser().letter">!</div>
+        <label *ngIf="!showUser().user?.name">Login</label>
+      </div>
       <span class="title">Sales Report</span>
     </mat-toolbar>
     <!-- Add Content Here -->

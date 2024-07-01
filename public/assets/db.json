@@ -342,5 +342,19 @@
         }
       ]
     }
-  ]
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Jorge",
+      "username": "admin",
+      "password": "admin123",
+      "role": "admin",
+      "permission": 5,
+      "CreatedAt": "2024-06-30T12:00:00Z",
+      "Active": true,
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+    }
+  ],
+  "tokens": []
 }

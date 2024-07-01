@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:3000/user';
+  private apiUrl = 'http://localhost:3000/users';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -16,6 +16,12 @@ export class UserService {
 
   getUserById(id: number): Observable<any> {
     return this.httpClient.get(`${this.apiUrl}/${id}`);
+  }
+
+  getUserByUsername(username: string): Observable<any> {
+    return this.getAllUsers().pipe(
+      map(users => users.find((us:any) => us.username === username))
+    );
   }
 
   createUser(user: any): Observable<any> {
